@@ -49,8 +49,6 @@ namespace PL.Controllers
             return Mapper.Map<IEnumerable<QuestionDTO>, List<QuestionViewModel>>(placeService.GetPlace(id).Questions);
         }
 
-
-
         // POST: api/Places
         public void Post(PlaceViewModel model)
         {
@@ -67,7 +65,32 @@ namespace PL.Controllers
             placeService.AddQuestiom(placeId, question);
         }
 
+        [Route("api/Places/AddAnswer")]
+        [HttpPost]
+        public void AddAnswer(QuestionViewModel question)
+        {
+            Mapper.CreateMap<PlaceViewModel, PlaceDTO>();
+            Mapper.CreateMap<QuestionViewModel, QuestionDTO>();
+            Mapper.CreateMap<FileViewModel, FileDTO>();
+            placeService.AddAnswer(question.PlaceID, Mapper.Map<QuestionViewModel, QuestionDTO>(question));
+        }
 
+        [Route("api/Places/AddCommentForPlace")]
+        [HttpPost]
+        public void AddCommentForPlace(int placeId, string comment)
+        {
+            placeService.AddComment(placeId, comment);
+        }
+
+        [Route("api/Places/AddFileForPlace")]
+        [HttpPost]
+        public void AddFile(FileViewModel file)
+        {
+            Mapper.CreateMap<PlaceViewModel, PlaceDTO>();
+            Mapper.CreateMap<QuestionViewModel, QuestionDTO>();
+            Mapper.CreateMap<FileViewModel, FileDTO>();
+            placeService.AddFile(file.PlaceId, Mapper.Map<FileViewModel, FileDTO>(file));
+        }
 
         // PUT: api/Places/5
         public void Put()

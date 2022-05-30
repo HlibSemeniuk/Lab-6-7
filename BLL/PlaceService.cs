@@ -67,14 +67,7 @@ namespace BLL
         public void AddAnswer(int id, QuestionDTO question)
         {
             Place place = Database.Places.Get(id);
-
-            foreach (Question q in place.Questions)
-            {
-                if (q.Description == question.Description)
-                {
-                    q.Answer = question.Answer;
-                }
-            }
+            place.Questions.ElementAt(question.Id - 1).Answer = question.Answer;
             Database.Save();
         }
 
