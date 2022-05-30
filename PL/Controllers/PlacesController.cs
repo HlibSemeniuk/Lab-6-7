@@ -39,6 +39,18 @@ namespace PL.Controllers
             return Mapper.Map<PlaceDTO, PlaceViewModel>(placeService.GetPlace(id));
         }
 
+        [Route("api/Places/GetQuestionsForPlace/{id}")]
+        [HttpGet]
+        public List<QuestionViewModel> GetQuestionsForPlace(int id)
+        {
+            Mapper.CreateMap<PlaceDTO, PlaceViewModel>();
+            Mapper.CreateMap<QuestionDTO, QuestionViewModel>();
+            Mapper.CreateMap<FileDTO, FileViewModel>();
+            return Mapper.Map<IEnumerable<QuestionDTO>, List<QuestionViewModel>>(placeService.GetPlace(id).Questions);
+        }
+
+
+
         // POST: api/Places
         public void Post(PlaceViewModel model)
         {
@@ -48,8 +60,17 @@ namespace PL.Controllers
             placeService.AddPlace(Mapper.Map<PlaceViewModel, PlaceDTO>(model));
         }
 
+        [Route("api/Places/AddQuestionForPlace")]
+        [HttpPost]
+        public void AddQuestionForPlace(int placeId, string question)
+        {
+            placeService.AddQuestiom(placeId, question);
+        }
+
+
+
         // PUT: api/Places/5
-        public void Put(int id, [FromBody]string value)
+        public void Put()
         {
         }
 
