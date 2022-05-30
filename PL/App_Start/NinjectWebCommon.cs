@@ -72,6 +72,7 @@ namespace NLayerApp.WebAPI.App_Start
         {
             //to comment
             kernel.Bind<IPlaceService>().To<PlaceService>();
+            kernel.Bind<IQuestionService>().To<QuestionService>();
             //
             //System.Web.Mvc.DependencyResolver.SetResolver(new NLayerApp.WebAPI.Util.NinjectDependencyResolver(kernel));
         }

@@ -15,10 +15,12 @@ namespace PL.Controllers
     {
 
         IPlaceService placeService;
+        IQuestionService questionService;
 
-        public PlacesController(IPlaceService service)
+        public PlacesController(IPlaceService service, IQuestionService questionService)
         {
             this.placeService = service;
+            this.questionService = questionService;
         }
 
         // GET: api/Places
@@ -62,17 +64,18 @@ namespace PL.Controllers
         [HttpPost]
         public void AddQuestionForPlace(int placeId, string question)
         {
-            placeService.AddQuestiom(placeId, question);
+            questionService.AddQuestiom(placeId, question);
         }
 
         [Route("api/Places/AddAnswer")]
         [HttpPost]
-        public void AddAnswer(QuestionViewModel question)
+        public void AddAnswer(int questionId, string answer)
         {
             Mapper.CreateMap<PlaceViewModel, PlaceDTO>();
             Mapper.CreateMap<QuestionViewModel, QuestionDTO>();
             Mapper.CreateMap<FileViewModel, FileDTO>();
-            placeService.AddAnswer(question.PlaceID, Mapper.Map<QuestionViewModel, QuestionDTO>(question));
+           
+            questionService.AddAnswer(questionId, answer);
         }
 
         [Route("api/Places/AddCommentForPlace")]
@@ -92,14 +95,28 @@ namespace PL.Controllers
             placeService.AddFile(file.PlaceId, Mapper.Map<FileViewModel, FileDTO>(file));
         }
 
+
+
+        // PUT:
+
         [Route("api/Places/ChangePlaceInfo")]
         [HttpPut]
-        public void Put(PlaceViewModel place)
+        public void ChangePlaceInfo(PlaceViewModel place)
         {
             Mapper.CreateMap<PlaceViewModel, PlaceDTO>();
             Mapper.CreateMap<QuestionViewModel, QuestionDTO>();
             Mapper.CreateMap<FileViewModel, FileDTO>();
             placeService.ChangePlaceInfo(Mapper.Map<PlaceViewModel, PlaceDTO>(place));
+        }
+
+        [Route("api/Places/ChangeQuestionInfo")]
+        [HttpPut]
+        public void ChangeQuestionInfo(QuestionViewModel question)
+        {
+            Mapper.CreateMap<PlaceViewModel, PlaceDTO>();
+            Mapper.CreateMap<QuestionViewModel, QuestionDTO>();
+            Mapper.CreateMap<FileViewModel, FileDTO>();
+            questionService.ChangeQuestionInfo(Mapper.Map<QuestionViewModel, QuestionDTO>(question));
         }
 
         // DELETE: api/Places/5

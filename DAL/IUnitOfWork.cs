@@ -9,6 +9,7 @@ namespace DAL
     public interface IUnitOfWork : IDisposable
     {
         IPlaceRepository Places { get; }
+        IQuestionRepository Questions { get; }
         void Save();
     }
 }

@@ -25,6 +25,7 @@ namespace PL.Util
         private void AddBindings()
         {
             kernel.Bind<IPlaceService>().To<PlaceService>();
+            kernel.Bind<IQuestionService>().To<QuestionService>();
         }
     }
 }

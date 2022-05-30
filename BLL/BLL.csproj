@@ -61,8 +61,10 @@
     <Compile Include="DTO\PlaceDTO.cs" />
     <Compile Include="DTO\QuestionDTO.cs" />
     <Compile Include="IPlaceService.cs" />
+    <Compile Include="IQuestionService.cs" />
     <Compile Include="PlaceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionService.cs" />
     <Compile Include="ServiceModule.cs" />
   </ItemGroup>
   <ItemGroup>

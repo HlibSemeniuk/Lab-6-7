@@ -12,10 +12,13 @@ namespace DAL
         private readonly PlaceContext _context;
         public IPlaceRepository Places { get; set; }
 
+        public IQuestionRepository Questions { get; set; }
+
         public UnitOfWork(string connectionString)
         {
             _context = new PlaceContext(connectionString);
             Places = new PlaceRepository(_context);
+            Questions = new QuestionRepository(_context);
         }
 
         public void Save()
@@ -37,9 +40,13 @@ namespace DAL
             }
         }
 
-        public void Update(Place place)
+        public void UpdatePlace(Place place)
         {
             Places.Update(place);
+        }
+        public void UpdateQuestion(Question question)
+        {
+            Questions.Update(question);
         }
     }
 }
