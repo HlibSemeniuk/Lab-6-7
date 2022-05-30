@@ -56,7 +56,9 @@
     <Compile Include="Entitys\File.cs" />
     <Compile Include="Entitys\Place.cs" />
     <Compile Include="Entitys\Question.cs" />
+    <Compile Include="FileRepository.cs" />
     <Compile Include="GenericRepository.cs" />
+    <Compile Include="IFileRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="IPlaceRepository.cs" />
     <Compile Include="IQuestionRepository.cs" />

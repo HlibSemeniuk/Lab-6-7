@@ -10,6 +10,7 @@ namespace DAL
     {
         IPlaceRepository Places { get; }
         IQuestionRepository Questions { get; }
+        IFileRepository Files { get; }
         void Save();
     }
 }

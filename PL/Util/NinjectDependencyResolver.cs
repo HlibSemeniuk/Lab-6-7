@@ -26,6 +26,7 @@ namespace PL.Util
         {
             kernel.Bind<IPlaceService>().To<PlaceService>();
             kernel.Bind<IQuestionService>().To<QuestionService>();
+            kernel.Bind<IFileService>().To<FileService>();
         }
     }
 }

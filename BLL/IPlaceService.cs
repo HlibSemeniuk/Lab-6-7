@@ -13,11 +13,7 @@ namespace BLL
         PlaceDTO GetPlace(int id);
         void AddPlace(PlaceDTO placeDTO);
         void AddComment(int id, string comment);
-        
-        void AddFile(int id, FileDTO file);
-        
         void ChangePlaceInfo(PlaceDTO placeDTO);
-        void ChangeFileInfo(FileDTO fileDTO);
         void Dispose();
     }
 }

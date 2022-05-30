@@ -60,6 +60,8 @@
     <Compile Include="DTO\FileDTO.cs" />
     <Compile Include="DTO\PlaceDTO.cs" />
     <Compile Include="DTO\QuestionDTO.cs" />
+    <Compile Include="FileService.cs" />
+    <Compile Include="IFileService.cs" />
     <Compile Include="IPlaceService.cs" />
     <Compile Include="IQuestionService.cs" />
     <Compile Include="PlaceService.cs" />

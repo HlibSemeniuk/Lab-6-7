@@ -92,10 +92,5 @@ namespace BLL
             Mapper.CreateMap<FileDTO, File>();
             Mapper.CreateMap<QuestionDTO, Question>();
         }
-
-        public void ChangeFileInfo(FileDTO fileDTO)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

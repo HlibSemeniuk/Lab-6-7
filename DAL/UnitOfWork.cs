@@ -13,12 +13,14 @@ namespace DAL
         public IPlaceRepository Places { get; set; }
 
         public IQuestionRepository Questions { get; set; }
+        public IFileRepository Files { get; set; }
 
         public UnitOfWork(string connectionString)
         {
             _context = new PlaceContext(connectionString);
             Places = new PlaceRepository(_context);
             Questions = new QuestionRepository(_context);
+            Files = new  FileRepository(_context);
         }
 
         public void Save()
