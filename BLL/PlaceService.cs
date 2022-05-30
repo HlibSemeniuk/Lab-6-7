@@ -71,10 +71,31 @@ namespace BLL
             Database.Save();
         }
 
+        public void ChangePlaceInfo(PlaceDTO placeDTO)
+        {
+            Mapper.CreateMap<PlaceDTO, Place>();
+            Mapper.CreateMap<FileDTO, File>();
+            Mapper.CreateMap<QuestionDTO, Question>();
+
+            Database.Places.Update(Mapper.Map<PlaceDTO, Place>(placeDTO));
+            Database.Save();
+        }
+
         public void Dispose()
         {
             Database.Dispose();
         }
 
+        public void ChangeQuestionInfo(QuestionDTO questionDTO)
+        {
+            Mapper.CreateMap<PlaceDTO, Place>();
+            Mapper.CreateMap<FileDTO, File>();
+            Mapper.CreateMap<QuestionDTO, Question>();
+        }
+
+        public void ChangeFileInfo(FileDTO fileDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

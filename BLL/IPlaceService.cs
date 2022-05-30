@@ -16,6 +16,9 @@ namespace BLL
         void AddQuestiom(int id, string question);
         void AddFile(int id, FileDTO file);
         void AddAnswer(int id, QuestionDTO question);
+        void ChangePlaceInfo(PlaceDTO placeDTO);
+        void ChangeQuestionInfo(QuestionDTO questionDTO);
+        void ChangeFileInfo(FileDTO fileDTO);
         void Dispose();
     }
 }

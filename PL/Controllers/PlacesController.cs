@@ -92,9 +92,14 @@ namespace PL.Controllers
             placeService.AddFile(file.PlaceId, Mapper.Map<FileViewModel, FileDTO>(file));
         }
 
-        // PUT: api/Places/5
-        public void Put()
+        [Route("api/Places/ChangePlaceInfo")]
+        [HttpPut]
+        public void Put(PlaceViewModel place)
         {
+            Mapper.CreateMap<PlaceViewModel, PlaceDTO>();
+            Mapper.CreateMap<QuestionViewModel, QuestionDTO>();
+            Mapper.CreateMap<FileViewModel, FileDTO>();
+            placeService.ChangePlaceInfo(Mapper.Map<PlaceViewModel, PlaceDTO>(place));
         }
 
         // DELETE: api/Places/5
