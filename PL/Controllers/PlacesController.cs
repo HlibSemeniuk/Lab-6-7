@@ -150,5 +150,12 @@ namespace PL.Controllers
         {
             questionService.DeleteQuestion(QiestionId);
         }
+
+        [Route("api/Places/DeleteFile")]
+        [HttpDelete]
+        public void DeleteFile(int FileID)
+        {
+            fileService.DeleteFile(FileID);
+        }
     }
 }

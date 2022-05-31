@@ -11,5 +11,6 @@ namespace BLL
     {
         void AddFile(FileDTO file);
         void ChangeFileInfo(FileDTO fileDTO);
+        void DeleteFile(int FileId);
     }
 }

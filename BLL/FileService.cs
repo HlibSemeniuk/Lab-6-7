@@ -38,5 +38,11 @@ namespace BLL
             Database.Files.Update(Mapper.Map<FileDTO, File>(fileDTO));
             Database.Save();
         }
+
+        public void DeleteFile(int FileId)
+        {
+            Database.Files.Delete(Database.Files.Get(FileId));
+            Database.Save();
+        }
     }
 }
