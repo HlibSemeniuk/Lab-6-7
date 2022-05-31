@@ -136,9 +136,12 @@ namespace PL.Controllers
             fileService.ChangeFileInfo(Mapper.Map<FileViewModel, FileDTO>(file));
         }
 
-        // DELETE: api/Places/5
-        public void Delete(int id)
+        // DELETE:
+        [Route("api/Places/DeletePlace")]
+        [HttpDelete]
+        public void Delete(int PlaceId)
         {
+            placeService.DeletePlace(PlaceId);
         }
     }
 }

@@ -40,5 +40,7 @@ namespace BLL
             Database.Questions.Update(Mapper.Map<QuestionDTO, Question>(questionDTO));
             Database.Save();
         }
+
+        
     }
 }

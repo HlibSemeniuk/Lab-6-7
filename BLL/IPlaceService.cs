@@ -14,6 +14,7 @@ namespace BLL
         void AddPlace(PlaceDTO placeDTO);
         void AddComment(int id, string comment);
         void ChangePlaceInfo(PlaceDTO placeDTO);
+        void DeletePlace(int id);
         void Dispose();
     }
 }

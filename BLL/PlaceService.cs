@@ -86,6 +86,13 @@ namespace BLL
             Database.Dispose();
         }
 
+        public void DeletePlace(int id)
+        {
+
+            Database.Places.Delete(Database.Places.Get(id));
+            Database.Save();
+        }
+
         public void ChangeQuestionInfo(QuestionDTO questionDTO)
         {
             Mapper.CreateMap<PlaceDTO, Place>();
