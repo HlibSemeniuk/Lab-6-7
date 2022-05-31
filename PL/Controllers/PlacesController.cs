@@ -139,9 +139,16 @@ namespace PL.Controllers
         // DELETE:
         [Route("api/Places/DeletePlace")]
         [HttpDelete]
-        public void Delete(int PlaceId)
+        public void DeletePlace(int PlaceId)
         {
             placeService.DeletePlace(PlaceId);
+        }
+
+        [Route("api/Places/DeleteQuestion")]
+        [HttpDelete]
+        public void DeleteQuestion(int QiestionId)
+        {
+            questionService.DeleteQuestion(QiestionId);
         }
     }
 }

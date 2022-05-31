@@ -12,5 +12,6 @@ namespace BLL
         void AddAnswer(int id, string answer);
         void AddQuestiom(int id, string question);
         void ChangeQuestionInfo(QuestionDTO questionDTO);
+        void DeleteQuestion(int QuestionId);
     }
 }

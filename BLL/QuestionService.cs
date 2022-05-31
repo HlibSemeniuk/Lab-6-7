@@ -41,6 +41,10 @@ namespace BLL
             Database.Save();
         }
 
-        
+        public void DeleteQuestion(int QuestionId)
+        {
+            Database.Questions.Delete(Database.Questions.Get(QuestionId));
+            Database.Save();
+        }
     }
 }
