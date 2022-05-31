@@ -44,5 +44,21 @@ namespace BLL
             Database.Files.Delete(Database.Files.Get(FileId));
             Database.Save();
         }
+
+        public IEnumerable<FileDTO> GetAll()
+        {
+            Mapper.CreateMap<Place, PlaceDTO>();
+            Mapper.CreateMap<File, FileDTO>();
+            Mapper.CreateMap<Question, QuestionDTO>();
+            return Mapper.Map<IEnumerable<File>, List<FileDTO>>(Database.Files.GetAll());
+        }
+
+        public FileDTO GetById(int id)
+        {
+            Mapper.CreateMap<Place, PlaceDTO>();
+            Mapper.CreateMap<File, FileDTO>();
+            Mapper.CreateMap<Question, QuestionDTO>();
+            return Mapper.Map<File, FileDTO>(Database.Files.Get(id));
+        }
     }
 }

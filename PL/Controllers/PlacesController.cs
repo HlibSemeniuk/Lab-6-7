@@ -26,7 +26,7 @@ namespace PL.Controllers
         }
 
         // GET: api/Places
-        public IEnumerable<PlaceViewModel> Get()
+        public List<PlaceViewModel> Get()
         {
             Mapper.CreateMap<PlaceDTO, PlaceViewModel>();
             Mapper.CreateMap<QuestionDTO, QuestionViewModel>();
@@ -62,6 +62,28 @@ namespace PL.Controllers
             Mapper.CreateMap<FileDTO, FileViewModel>();
             return Mapper.Map<IEnumerable<QuestionDTO>, List<QuestionViewModel>>(questionService.GetAll());
         }
+
+        [Route("api/Places/GetFiles")]
+        [HttpGet]
+        public List<FileViewModel> GetAllFiles()
+        {
+            Mapper.CreateMap<PlaceDTO, PlaceViewModel>();
+            Mapper.CreateMap<QuestionDTO, QuestionViewModel>();
+            Mapper.CreateMap<FileDTO, FileViewModel>();
+            return Mapper.Map<IEnumerable<FileDTO>, List<FileViewModel>>(fileService.GetAll());
+        }
+
+        [Route("api/Places/GetFile")]
+        [HttpGet]
+        public FileViewModel GetFile(int id)
+        {
+            Mapper.CreateMap<PlaceDTO, PlaceViewModel>();
+            Mapper.CreateMap<QuestionDTO, QuestionViewModel>();
+            Mapper.CreateMap<FileDTO, FileViewModel>();
+            return Mapper.Map<FileDTO, FileViewModel>(fileService.GetById(id));
+        }
+
+
         // POST: api/Places
         public void Post(PlaceViewModel model)
         {

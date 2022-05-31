@@ -52,25 +52,6 @@ namespace BLL
             Database.Save();
         }
 
-        public void AddQuestiom(int id, string question)
-        {
-            Database.Places.Get(id).Questions.Add(new Question() { Description = question });
-            Database.Save();
-        }
-
-        public void AddFile(int id, FileDTO file)
-        {
-            Database.Places.Get(id).Files.Add(new File() { Type = file.Type, Way = file.Way });
-            Database.Save();
-        }
-
-        public void AddAnswer(int id, QuestionDTO question)
-        {
-            Place place = Database.Places.Get(id);
-            place.Questions.ElementAt(question.Id - 1).Answer = question.Answer;
-            Database.Save();
-        }
-
         public void ChangePlaceInfo(PlaceDTO placeDTO)
         {
             Mapper.CreateMap<PlaceDTO, Place>();
@@ -91,13 +72,6 @@ namespace BLL
 
             Database.Places.Delete(Database.Places.Get(id));
             Database.Save();
-        }
-
-        public void ChangeQuestionInfo(QuestionDTO questionDTO)
-        {
-            Mapper.CreateMap<PlaceDTO, Place>();
-            Mapper.CreateMap<FileDTO, File>();
-            Mapper.CreateMap<QuestionDTO, Question>();
         }
     }
 }
