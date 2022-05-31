@@ -53,6 +53,15 @@ namespace PL.Controllers
             return Mapper.Map<IEnumerable<QuestionDTO>, List<QuestionViewModel>>(placeService.GetPlace(id).Questions);
         }
 
+        [Route("api/Places/GetQuestions")]
+        [HttpGet]
+        public List<QuestionViewModel> GetAllQuestions()
+        {
+            Mapper.CreateMap<PlaceDTO, PlaceViewModel>();
+            Mapper.CreateMap<QuestionDTO, QuestionViewModel>();
+            Mapper.CreateMap<FileDTO, FileViewModel>();
+            return Mapper.Map<IEnumerable<QuestionDTO>, List<QuestionViewModel>>(questionService.GetAll());
+        }
         // POST: api/Places
         public void Post(PlaceViewModel model)
         {
