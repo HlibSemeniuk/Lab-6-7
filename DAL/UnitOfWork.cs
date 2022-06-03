@@ -50,5 +50,10 @@ namespace DAL
         {
             Questions.Update(question);
         }
+
+        public void DeleteDB()
+        {
+            _context.Database.Delete();
+        }
     }
 }

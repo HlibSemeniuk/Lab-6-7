@@ -12,5 +12,6 @@ namespace DAL
         IQuestionRepository Questions { get; }
         IFileRepository Files { get; }
         void Save();
+        void DeleteDB();
     }
 }
