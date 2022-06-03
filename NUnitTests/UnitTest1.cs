@@ -242,5 +242,45 @@ namespace NUnitTests
             _unitOfWork.Received(1).Files.Update(Arg.Any<File>());
         }
 
+        [Test]
+        public void DeletePlace_should_call_UnitOfWork_Delete_method_once()
+        {
+            // Arrange
+            int placeId = 1;
+
+            // Act
+            _placeService.DeletePlace(placeId);
+
+            // Assert
+            _unitOfWork.Places.Received(1).Delete(Arg.Any<Place>());
+        }
+
+        [Test]
+        public void DeleteQuestion_should_call_UnitOfWork_Delete_method_once()
+        {
+            // Arrange
+            int questionId = 1;
+
+            // Act
+            _questionService.DeleteQuestion(questionId);
+
+            // Assert
+            _unitOfWork.Questions.Received(1).Delete(Arg.Any<Question>());
+        }
+
+        [Test]
+        public void DeleteFile_should_call_UnitOfWork_Delete_method_once()
+        {
+            // Arrange
+            int fileId = 1;
+
+            // Act
+            _fileService.DeleteFile(fileId);
+
+            // Assert
+            _unitOfWork.Files.Received(1).Delete(Arg.Any<File>());
+        }
+
+
     }
 }
