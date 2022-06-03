@@ -28,7 +28,7 @@ namespace BLL
 
         public void AddQuestiom(int Id, string question)
         {
-            Database.Places.Get(Id).Questions.Add(new Question() { Description = question });
+            Database.Questions.Add(new Question { Description = question, PlaceID = Id });
             Database.Save();
         }
 

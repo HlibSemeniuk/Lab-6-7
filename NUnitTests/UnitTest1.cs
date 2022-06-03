@@ -17,6 +17,26 @@ namespace NUnitTests
     [TestFixture]
     public class Tests
     {
+        
+        private readonly IFixture _fixture = new Fixture();
+        
+        private PlaceService _placeService;
+        private QuestionService _questionService;
+        private FileService _fileService;
+        private IUnitOfWork _unitOfWork;
+
+
+        [SetUp]
+        protected void SetUp()
+        {
+            _unitOfWork = Substitute.For<IUnitOfWork>();
+            _fixture.Inject(_unitOfWork);
+
+            _placeService = _fixture.Create<PlaceService>();
+            _questionService = _fixture.Create<QuestionService>();
+            _fileService = _fixture.Create<FileService>();
+        }
+
 
         [Test]
         public void PlaceService_Given_Place_Id_Should_Get_Place_Object()
@@ -140,6 +160,47 @@ namespace NUnitTests
 
             // Assert
             Assert.That(result.Count == 3);
+        }
+
+        [Test]
+        public void AddPlace_should_call_UnitOfWork_add_method_twice()
+        {
+            // Arrange
+            PlaceDTO place = new PlaceDTO();
+
+            // Act
+            _placeService.AddPlace(place);
+            _placeService.AddPlace(place);
+
+            // Assert
+            _unitOfWork.Received(2).Places.Add(Arg.Any<Place>());
+        }
+
+        [Test]
+        public void AddFile_should_call_UnitOfWork_add_method_once()
+        {
+            // Arrange
+            FileDTO file = new FileDTO();
+
+            // Act
+            _fileService.AddFile(file);
+
+            // Assert
+            _unitOfWork.Received(1).Files.Add(Arg.Any<File>());
+        }
+
+        [Test]
+        public void AddQuestion_should_call_UnitOfWork_add_method_once()
+        {
+            // Arrange
+            string question = "question";
+            int placeId = 1;
+
+            // Act
+            _questionService.AddQuestiom(placeId, question);
+
+            // Assert
+            _unitOfWork.Received(1).Questions.Add(Arg.Any<Question>());
         }
 
     }
