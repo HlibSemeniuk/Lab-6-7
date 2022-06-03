@@ -17,9 +17,9 @@ namespace NUnitTests
     [TestFixture]
     public class Tests
     {
-        
+
         private readonly IFixture _fixture = new Fixture();
-        
+
         private PlaceService _placeService;
         private QuestionService _questionService;
         private FileService _fileService;
@@ -52,7 +52,7 @@ namespace NUnitTests
             var uow = new Mock<IUnitOfWork>();
             uow.Setup(m => m.Places).Returns(placeRepositoryMock.Object);
 
-            IPlaceService service = new PlaceService(uow.Object); 
+            IPlaceService service = new PlaceService(uow.Object);
 
             // Act
             var result = service.GetPlace(placeId);
@@ -82,7 +82,7 @@ namespace NUnitTests
 
             // Act
             var result = service.GetPlaces().ToList();
-            
+
             // Assert
             Assert.That(result.Count == 3);
         }
@@ -201,6 +201,45 @@ namespace NUnitTests
 
             // Assert
             _unitOfWork.Received(1).Questions.Add(Arg.Any<Question>());
+        }
+
+        [Test]
+        public void ChangePlaceInfo_should_call_UnitOfWork_Update_method_once()
+        {
+            // Arrange
+            PlaceDTO place = new PlaceDTO();
+
+            // Act
+            _placeService.ChangePlaceInfo(place);
+
+            // Assert
+            _unitOfWork.Received(1).Places.Update(Arg.Any<Place>());
+        }
+
+        [Test]
+        public void ChangeQuestionInfo_should_call_UnitOfWork_Update_method_once()
+        {
+            // Arrange
+            QuestionDTO question = new QuestionDTO();
+
+            // Act
+            _questionService.ChangeQuestionInfo(question);
+
+            // Assert
+            _unitOfWork.Received(1).Questions.Update(Arg.Any<Question>());
+        }
+
+        [Test]
+        public void ChangeFileInfo_should_call_UnitOfWork_Update_method_once()
+        {
+            // Arrange
+            FileDTO file = new FileDTO();
+
+            // Act
+            _fileService.ChangeFileInfo(file);
+
+            // Assert
+            _unitOfWork.Received(1).Files.Update(Arg.Any<File>());
         }
 
     }
